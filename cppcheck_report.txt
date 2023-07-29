@@ -1,0 +1,389 @@
+src/cork-test/cork-test.c:445:21: style: Expression is always false because 'else if' condition matches previous condition at line 442. [multiCondition]
+    } else if (argc < 2) {
+                    ^
+src/libcork/core/gc.c:209:13: style:inconclusive: Boolean expression 'true' is used in bitwise operation. Did you mean '&&'? [bitwiseOnBoolean]
+            cork_gc_set_buffered(header, true);
+            ^
+src/libcork/core/gc.c:296:13: style:inconclusive: Boolean expression 'false' is used in bitwise operation. Did you mean '&&'? [bitwiseOnBoolean]
+            cork_gc_set_buffered(header, false);
+            ^
+src/libcork/core/gc.c:390:13: style:inconclusive: Boolean expression 'false' is used in bitwise operation. Did you mean '&&'? [bitwiseOnBoolean]
+            cork_gc_set_buffered(header, false);
+            ^
+src/libcork/core/mempool.c:186:11: warning: Either the condition 'mp->free_list==NULL' is redundant or there is pointer arithmetic with NULL pointer. [nullPointerArithmeticRedundantCheck]
+    ptr = cork_mempool_get_object(obj);
+          ^
+src/libcork/core/mempool.c:179:37: note: Assuming that condition 'mp->free_list==NULL' is not redundant
+    if (CORK_UNLIKELY(mp->free_list == NULL)) {
+                                    ^
+src/libcork/core/mempool.c:183:13: note: Assignment 'obj=mp->free_list', assigned value is 0
+    obj = mp->free_list;
+            ^
+src/libcork/core/mempool.c:186:11: note: Null pointer addition
+    ptr = cork_mempool_get_object(obj);
+          ^
+src/libcork/core/mempool.c:159:16: style: Redundant initialization for 'index'. The initialized value is overwritten before it is read. [redundantInitialization]
+    for (index = sizeof(struct cork_mempool_block);
+               ^
+src/libcork/core/mempool.c:158:19: note: index is initialized
+    size_t  index = sizeof(struct cork_mempool_block);
+                  ^
+src/libcork/core/mempool.c:159:16: note: index is overwritten
+    for (index = sizeof(struct cork_mempool_block);
+               ^
+src/libcork/core/mempool.c:162:51: portability: 'vblock' is of type 'void *'. When using void pointers in calculations, the behaviour is undefined. [arithOperationsOnVoidPointer]
+        struct cork_mempool_object  *obj = vblock + index;
+                                                  ^
+src/libcork/ds/file-stream.c:31:14: style: The scope of the variable 'bytes_read' can be reduced. [variableScope]
+    ssize_t  bytes_read;
+             ^
+src/libcork/ds/file-stream.c:54:13: style: The scope of the variable 'bytes_read' can be reduced. [variableScope]
+    size_t  bytes_read;
+            ^
+src/libcork/ds/file-stream.c:83:1: style: Label 'error' is not used. [unusedLabel]
+error:
+^
+src/libcork/ds/file-stream.c:163:17: portability: 'buf' is of type 'const void *'. When using void pointers in calculations, the behaviour is undefined. [arithOperationsOnVoidPointer]
+            buf += rc;
+                ^
+src/libcork/ds/hash-table.c:375:49: style: Local variable 'entry' shadows outer variable [shadowVariable]
+            struct cork_hash_table_entry_priv  *entry =
+                                                ^
+src/libcork/ds/hash-table.c:360:41: note: Shadowed declaration
+    struct cork_hash_table_entry_priv  *entry;
+                                        ^
+src/libcork/ds/hash-table.c:375:49: note: Shadow variable
+            struct cork_hash_table_entry_priv  *entry =
+                                                ^
+src/libcork/ds/hash-table.c:446:49: style: Local variable 'entry' shadows outer variable [shadowVariable]
+            struct cork_hash_table_entry_priv  *entry =
+                                                ^
+src/libcork/ds/hash-table.c:432:41: note: Shadowed declaration
+    struct cork_hash_table_entry_priv  *entry;
+                                        ^
+src/libcork/ds/hash-table.c:446:49: note: Shadow variable
+            struct cork_hash_table_entry_priv  *entry =
+                                                ^
+src/libcork/ds/managed-buffer.c:114:24: portability: '(void*)(self)' is of type 'void *'. When using void pointers in calculations, the behaviour is undefined. [arithOperationsOnVoidPointer]
+    self->parent.buf = cork_managed_buffer_copied_data(self);
+                       ^
+src/libcork/posix/exec.c:70:16: error: va_list 'args' was opened but not closed by va_end(). [va_end_missing]
+    return exec;
+               ^
+src/libcork/posix/files.c:863:24: style: The scope of the variable 'path' can be reduced. [variableScope]
+    struct cork_path  *path;
+                       ^
+src/libcork/posix/files.c:132:1: style: Label 'error' is not used. [unusedLabel]
+error:
+^
+src/libcork/posix/files.c:168:1: style: Label 'error' is not used. There is #if in function body so the label might be used in code that is removed by the preprocessor. [unusedLabelConfiguration]
+error:
+^
+src/libcork/posix/files.c:180:1: style: Label 'error' is not used. [unusedLabel]
+error:
+^
+src/libcork/posix/files.c:505:1: style: Label 'error' is not used. [unusedLabel]
+error:
+^
+src/libcork/posix/files.c:757:1: style: Label 'error' is not used. [unusedLabel]
+error:
+^
+src/libcork/posix/files.c:815:1: style: Label 'error' is not used. [unusedLabel]
+error:
+^
+src/libcork/posix/files.c:854:1: style: Label 'error' is not used. [unusedLabel]
+error:
+^
+src/libcork/posix/subprocess.c:145:1: style: Label 'error' is not used. [unusedLabel]
+error:
+^
+src/libcork/posix/subprocess.c:600:1: style: Label 'error' is not used. [unusedLabel]
+error:
+^
+tests/test-core.c:752:5: portability: Shifting signed 32-bit value by 31 bits is implementation-defined behaviour [shiftTooManyBitsSigned]
+    test(gsec, 1 << 31);
+    ^
+tests/test-core.c:759:5: portability: Shifting signed 32-bit value by 31 bits is implementation-defined behaviour [shiftTooManyBitsSigned]
+    test(gsec, 1 << 31);
+    ^
+tests/test-core.c:766:5: portability: Shifting signed 32-bit value by 31 bits is implementation-defined behaviour [shiftTooManyBitsSigned]
+    test(gsec, 1 << 31);
+    ^
+tests/test-core.c:752:5: error: Signed integer overflow for expression '1<<31'. [integerOverflow]
+    test(gsec, 1 << 31);
+    ^
+tests/test-core.c:759:5: error: Signed integer overflow for expression '1<<31'. [integerOverflow]
+    test(gsec, 1 << 31);
+    ^
+tests/test-core.c:766:5: error: Signed integer overflow for expression '1<<31'. [integerOverflow]
+    test(gsec, 1 << 31);
+    ^
+tests/test-dllist.c:136:17: style: Variable 'item1.value' is assigned a value that is never used. [unreadVariable]
+    item1.value = 1;
+                ^
+tests/test-dllist.c:140:17: style: Variable 'item2.value' is assigned a value that is never used. [unreadVariable]
+    item2.value = 2;
+                ^
+tests/test-dllist.c:144:17: style: Variable 'item3.value' is assigned a value that is never used. [unreadVariable]
+    item3.value = 3;
+                ^
+tests/test-dllist.c:148:17: style: Variable 'item4.value' is assigned a value that is never used. [unreadVariable]
+    item4.value = 4;
+                ^
+tests/test-dllist.c:150:17: style: Variable 'item5.value' is assigned a value that is never used. [unreadVariable]
+    item5.value = 5;
+                ^
+tests/test-dllist.c:155:17: style: Variable 'item6.value' is assigned a value that is never used. [unreadVariable]
+    item6.value = 6;
+                ^
+tests/test-dllist.c:157:17: style: Variable 'item7.value' is assigned a value that is never used. [unreadVariable]
+    item7.value = 7;
+                ^
+tests/test-hash-table.c:256:13: style: Variable 'old_key' is reassigned a value before the old one has been used. [redundantAssignment]
+    old_key = v_key;
+            ^
+tests/test-hash-table.c:245:13: note: old_key is assigned
+    old_key = v_key;
+            ^
+tests/test-hash-table.c:256:13: note: old_key is overwritten
+    old_key = v_key;
+            ^
+tests/test-hash-table.c:257:15: style: Variable 'old_value' is reassigned a value before the old one has been used. [redundantAssignment]
+    old_value = v_value;
+              ^
+tests/test-hash-table.c:246:15: note: old_value is assigned
+    old_value = v_value;
+              ^
+tests/test-hash-table.c:257:15: note: old_value is overwritten
+    old_value = v_value;
+              ^
+tests/test-hash-table.c:256:13: style: Variable 'old_key' is assigned a value that is never used. [unreadVariable]
+    old_key = v_key;
+            ^
+tests/test-hash-table.c:257:15: style: Variable 'old_value' is assigned a value that is never used. [unreadVariable]
+    old_value = v_value;
+              ^
+tests/test-threads.c:106:21: error: Syntax Error: AST broken, 'while' doesn't have two operands. [internalAstError]
+    cork_once(once, go);
+                    ^
+src/cork-initializer/init1.c:14:0: style: The function 'CORK_INITIALIZER' is never used. [unusedFunction]
+
+^
+src/libcork/core/allocator.c:170:0: style: The function 'cork_alloc_set_calloc' is never used. [unusedFunction]
+
+^
+src/libcork/core/allocator.c:176:0: style: The function 'cork_alloc_set_malloc' is never used. [unusedFunction]
+
+^
+src/libcork/core/allocator.c:182:0: style: The function 'cork_alloc_set_realloc' is never used. [unusedFunction]
+
+^
+src/libcork/core/allocator.c:161:0: style: The function 'cork_alloc_set_user_data' is never used. [unusedFunction]
+
+^
+src/libcork/core/allocator.c:188:0: style: The function 'cork_alloc_set_xcalloc' is never used. [unusedFunction]
+
+^
+src/libcork/core/allocator.c:200:0: style: The function 'cork_alloc_set_xrealloc' is never used. [unusedFunction]
+
+^
+src/libcork/core/allocator.c:232:0: style: The function 'cork_alloc_strdup' is never used. [unusedFunction]
+
+^
+src/libcork/core/allocator.c:276:0: style: The function 'cork_alloc_strfree' is never used. [unusedFunction]
+
+^
+src/libcork/core/allocator.c:238:0: style: The function 'cork_alloc_strndup' is never used. [unusedFunction]
+
+^
+src/libcork/core/allocator.c:263:0: style: The function 'cork_alloc_xstrdup' is never used. [unusedFunction]
+
+^
+src/libcork/core/allocator.c:269:0: style: The function 'cork_alloc_xstrndup' is never used. [unusedFunction]
+
+^
+src/libcork/ds/bitset.c:59:0: style: The function 'cork_bitset_clear' is never used. [unusedFunction]
+
+^
+src/libcork/ds/buffer.c:72:0: style: The function 'cork_buffer_ensure_size_' is never used. [unusedFunction]
+
+^
+src/libcork/posix/process.c:109:0: style: The function 'cork_cleanup_at_exit_named' is never used. [unusedFunction]
+
+^
+src/libcork/ds/file-stream.c:51:0: style: The function 'cork_consume_file' is never used. [unusedFunction]
+
+^
+src/libcork/pthreads/thread.c:56:0: style: The function 'cork_current_thread_get' is never used. [unusedFunction]
+
+^
+src/libcork/pthreads/thread.c:63:0: style: The function 'cork_current_thread_get_id' is never used. [unusedFunction]
+
+^
+src/libcork/posix/env.c:168:0: style: The function 'cork_env_remove' is never used. [unusedFunction]
+
+^
+src/libcork/core/error.c:162:0: style: The function 'cork_error_prefix_printf' is never used. [unusedFunction]
+
+^
+src/libcork/core/error.c:177:0: style: The function 'cork_error_prefix_string' is never used. [unusedFunction]
+
+^
+src/libcork/posix/exec.c:151:0: style: The function 'cork_exec_cwd' is never used. [unusedFunction]
+
+^
+src/libcork/posix/exec.c:136:0: style: The function 'cork_exec_env' is never used. [unusedFunction]
+
+^
+src/libcork/posix/exec.c:58:0: style: The function 'cork_exec_new_with_params' is never used. [unusedFunction]
+
+^
+src/libcork/posix/exec.c:118:0: style: The function 'cork_exec_param' is never used. [unusedFunction]
+
+^
+src/libcork/posix/exec.c:112:0: style: The function 'cork_exec_param_count' is never used. [unusedFunction]
+
+^
+src/libcork/posix/exec.c:106:0: style: The function 'cork_exec_program' is never used. [unusedFunction]
+
+^
+src/libcork/ds/file-stream.c:189:0: style: The function 'cork_fd_consumer_new' is never used. [unusedFunction]
+
+^
+src/libcork/ds/file-stream.c:201:0: style: The function 'cork_file_from_path_consumer_new' is never used. [unusedFunction]
+
+^
+src/libcork/posix/files.c:717:0: style: The function 'cork_file_list_new' is never used. [unusedFunction]
+
+^
+src/libcork/posix/files.c:471:0: style: The function 'cork_file_type' is never used. [unusedFunction]
+
+^
+src/libcork/core/gc.c:164:0: style: The function 'cork_gc_alloc' is never used. [unusedFunction]
+
+^
+src/libcork/ds/hash-table.c:329:0: style: The function 'cork_hash_table_get_hash' is never used. [unusedFunction]
+
+^
+src/libcork/ds/hash-table.c:207:0: style: The function 'cork_hash_table_set_user_data' is never used. [unusedFunction]
+
+^
+src/libcork/core/ip-address.c:502:0: style: The function 'cork_ip_equal_' is never used. [unusedFunction]
+
+^
+src/libcork/core/ip-address.c:463:0: style: The function 'cork_ip_from_ipv4_' is never used. [unusedFunction]
+
+^
+src/libcork/core/ip-address.c:469:0: style: The function 'cork_ip_from_ipv6_' is never used. [unusedFunction]
+
+^
+src/libcork/core/ip-address.c:526:0: style: The function 'cork_ip_is_valid_network' is never used. [unusedFunction]
+
+^
+src/libcork/core/ip-address.c:112:0: style: The function 'cork_ipv4_equal_' is never used. [unusedFunction]
+
+^
+src/libcork/core/ip-address.c:343:0: style: The function 'cork_ipv6_equal_' is never used. [unusedFunction]
+
+^
+src/libcork/ds/managed-buffer.c:60:0: style: The function 'cork_managed_buffer_new' is never used. [unusedFunction]
+
+^
+src/libcork/core/mempool.c:68:0: style: The function 'cork_mempool_new_size_ex' is never used. [unusedFunction]
+
+^
+src/libcork/core/mempool.c:132:0: style: The function 'cork_mempool_set_callbacks' is never used. [unusedFunction]
+
+^
+src/libcork/posix/files.c:174:0: style: The function 'cork_path_absolute' is never used. [unusedFunction]
+
+^
+src/libcork/ds/array.c:191:0: style: The function 'cork_raw_array_append' is never used. [unusedFunction]
+
+^
+src/libcork/ds/array.c:126:0: style: The function 'cork_raw_array_clear' is never used. [unusedFunction]
+
+^
+src/libcork/ds/array.c:265:0: style: The function 'cork_raw_array_copy' is never used. [unusedFunction]
+
+^
+src/libcork/ds/array.c:70:0: style: The function 'cork_raw_array_done' is never used. [unusedFunction]
+
+^
+src/libcork/ds/array.c:120:0: style: The function 'cork_raw_array_element_size' is never used. [unusedFunction]
+
+^
+src/libcork/ds/array.c:140:0: style: The function 'cork_raw_array_elements' is never used. [unusedFunction]
+
+^
+src/libcork/ds/array.c:158:0: style: The function 'cork_raw_array_is_empty' is never used. [unusedFunction]
+
+^
+src/libcork/ds/array.c:227:0: style: The function 'cork_raw_array_remove_range' is never used. [unusedFunction]
+
+^
+src/libcork/ds/array.c:88:0: style: The function 'cork_raw_array_set_callback_data' is never used. [unusedFunction]
+
+^
+src/libcork/ds/array.c:102:0: style: The function 'cork_raw_array_set_done' is never used. [unusedFunction]
+
+^
+src/libcork/ds/array.c:96:0: style: The function 'cork_raw_array_set_init' is never used. [unusedFunction]
+
+^
+src/libcork/ds/array.c:114:0: style: The function 'cork_raw_array_set_remove' is never used. [unusedFunction]
+
+^
+src/libcork/ds/array.c:108:0: style: The function 'cork_raw_array_set_reuse' is never used. [unusedFunction]
+
+^
+src/libcork/ds/array.c:152:0: style: The function 'cork_raw_array_size' is never used. [unusedFunction]
+
+^
+src/libcork/ds/slice.c:186:0: style: The function 'cork_slice_advance_checked' is never used. [unusedFunction]
+
+^
+src/libcork/ds/slice.c:124:0: style: The function 'cork_slice_light_copy_offset' is never used. [unusedFunction]
+
+^
+src/libcork/ds/slice.c:173:0: style: The function 'cork_slice_slice_offset' is never used. [unusedFunction]
+
+^
+src/libcork/posix/subprocess.c:550:0: style: The function 'cork_subprocess_drain' is never used. [unusedFunction]
+
+^
+src/libcork/posix/subprocess.c:607:0: style: The function 'cork_subprocess_group_abort' is never used. [unusedFunction]
+
+^
+src/libcork/posix/subprocess.c:641:0: style: The function 'cork_subprocess_group_drain' is never used. [unusedFunction]
+
+^
+src/libcork/posix/subprocess.c:558:0: style: The function 'cork_subprocess_wait' is never used. [unusedFunction]
+
+^
+src/libcork/pthreads/thread.c:109:0: style: The function 'cork_thread_free' is never used. [unusedFunction]
+
+^
+src/libcork/pthreads/thread.c:122:0: style: The function 'cork_thread_get_id' is never used. [unusedFunction]
+
+^
+src/libcork/pthreads/thread.c:116:0: style: The function 'cork_thread_get_name' is never used. [unusedFunction]
+
+^
+src/libcork/pthreads/thread.c:200:0: style: The function 'cork_thread_join' is never used. [unusedFunction]
+
+^
+src/libcork/pthreads/thread.c:82:0: style: The function 'cork_thread_new' is never used. [unusedFunction]
+
+^
+src/libcork/pthreads/thread.c:168:0: style: The function 'cork_thread_start' is never used. [unusedFunction]
+
+^
+src/libcork/core/timestamp.c:19:0: style: The function 'cork_timestamp_init_now' is never used. [unusedFunction]
+
+^
+src/libcork/core/error.c:243:0: style: The function 'cork_unknown_error_set_' is never used. [unusedFunction]
+
+^
+nofile:0:0: information: Cppcheck cannot find all the include files (use --check-config for details) [missingInclude]
+
